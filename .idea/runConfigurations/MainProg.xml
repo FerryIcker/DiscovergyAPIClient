@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MainProg" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.discovergy.apiclient.application.MeinProg" />
+    <module name="DiscovergyAPIClient" />
+    <option name="PROGRAM_PARAMETERS" value="demo@discovergy.com demo EASYMETER_1321002901   192.168.178.51 2000  " />
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

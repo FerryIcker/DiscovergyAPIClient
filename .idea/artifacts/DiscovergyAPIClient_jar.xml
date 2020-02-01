@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DiscovergyAPIClient:jar">
+    <output-path>C:/Java</output-path>
+    <root id="archive" name="DiscovergyAPIClient.jar">
+      <element id="module-output" name="DiscovergyAPIClient" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Lib/flexjson-3.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Lib/json-20180130.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Lib/scribejava-core-4.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Lib/jetty-all-9.3.8.v20160314.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
