@@ -18,11 +18,42 @@ import java.util.Timer;
 import java.util.TimerTask;
 import org.json.*;
 import java.sql.*;
-import java.text.DecimalFormat;
+import java.text.*;
+import java.util.Date;
+
 
 public class MeinProg {
 
     private static HttpURLConnection con;
+
+
+    public static String getDateAsString() {
+        DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        return formatter.format(new Date());
+    }
+    // Alle 24 Stunden einen neuen Tooken generieren
+    //
+    public static String gespeichertesDatum ="";
+    public static String akuellesDatum = getDateAsString();
+    public static void GenerateNewTooken() throws Exception{
+        try
+        {
+            // Da tooken nur eine zeitliche begrenzung haben, muiss dieser von zeit zu zeit aktualisiert werden.
+            // Bei Discovergy ist mit die Ablaufzeit nicht bekannt Ich schätze einige Tage
+            // Wenn das aktuelle datum nicht dem gespeicherten Datum entspricht neuen Token generieren
+            // Dadurch wird alle 24h ein neuer Tooken generiert.
+            akuellesDatum = getDateAsString();
+            if (!gespeichertesDatum.equals(akuellesDatum) ){
+                gespeichertesDatum = getDateAsString();
+                init(paramUser,paramPassword);
+            }
+
+        }   catch (Exception e) {
+        e.printStackTrace();
+        counter = 0;
+    }
+    }
+
 
     public static void SetPower(String IpAdress, long iPower, long iPower1, long iPower2, long iPower3, long iEnergyOut, long iEnergy)
             throws MalformedURLException, ProtocolException, IOException {
@@ -153,13 +184,14 @@ public class MeinProg {
             init(paramUser, paramPassword);
         }
 
-    };
+    }
 
     public static String paramUser = "";
     public static String paramPassword = "";
     public static String HMIpAdresse = "";
     public static String MeterId = "";
     public static String Intervall = "";
+
 
 
 
@@ -175,13 +207,12 @@ public class MeinProg {
             HMIpAdresse = args[3];
             Intervall = args[4];
         }
-        ;
         counter=60;// Sofort starten
-        init(paramUser, paramPassword);
+        //init(paramUser, paramPassword);
         TimerTask action = new TimerTask() {
             public void run() {
                 try {
-
+                    GenerateNewTooken();
                     query(HMIpAdresse, MeterId);
 
                 } catch (Exception e) {
